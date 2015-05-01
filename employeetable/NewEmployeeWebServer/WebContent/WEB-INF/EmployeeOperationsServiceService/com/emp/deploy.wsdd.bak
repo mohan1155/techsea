@@ -1,0 +1,129 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from EmployeeOperationsServiceService WSDL service -->
+
+  <service name="EmployeeOperationsService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://emp.com"/>
+      <parameter name="wsdlServiceElement" value="EmployeeOperationsServiceService"/>
+      <parameter name="schemaQualified" value="http://support.com,http://emp.com"/>
+      <parameter name="wsdlServicePort" value="EmployeeOperationsService"/>
+      <parameter name="className" value="com.emp.EmployeeOperationsServiceSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="EmployeeOperationsService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="selectAllEmpDetails" qname="operNS:selectAllEmpDetails" xmlns:operNS="http://emp.com" returnQName="retNS:selectAllEmpDetailsReturn" xmlns:retNS="http://emp.com" returnType="rtns:EmpArray" xmlns:rtns="http://support.com" soapAction="" >
+      </operation>
+      <operation name="selectEmpDetails" qname="operNS:selectEmpDetails" xmlns:operNS="http://emp.com" returnQName="retNS:selectEmpDetailsReturn" xmlns:retNS="http://emp.com" returnType="rtns:anyType" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:emp" xmlns:pns="http://emp.com" type="tns:Emp" xmlns:tns="http://support.com"/>
+      </operation>
+      <operation name="insertEmpDetails" qname="operNS:insertEmpDetails" xmlns:operNS="http://emp.com" returnQName="retNS:insertEmpDetailsReturn" xmlns:retNS="http://emp.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:emp" xmlns:pns="http://emp.com" type="tns:Emp" xmlns:tns="http://support.com"/>
+      </operation>
+      <operation name="updateEmpDetails" qname="operNS:updateEmpDetails" xmlns:operNS="http://emp.com" returnQName="retNS:updateEmpDetailsReturn" xmlns:retNS="http://emp.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:emp" xmlns:pns="http://emp.com" type="tns:Emp" xmlns:tns="http://support.com"/>
+      </operation>
+      <operation name="deleteEmpDetails" qname="operNS:deleteEmpDetails" xmlns:operNS="http://emp.com" returnQName="retNS:deleteEmpDetailsReturn" xmlns:retNS="http://emp.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:emp" xmlns:pns="http://emp.com" type="tns:Emp" xmlns:tns="http://support.com"/>
+      </operation>
+      <operation name="hello" qname="operNS:Hello" xmlns:operNS="http://emp.com" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="selectAllEmpDetails selectEmpDetails hello insertEmpDetails updateEmpDetails deleteEmpDetails"/>
+
+      <typeMapping
+        xmlns:ns="http://emp.com"
+        qname="ns:>HelloResponse"
+        type="java:com.emp.HelloResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://emp.com"
+        qname="ns:>insertEmpDetailsResponse"
+        type="java:com.emp.InsertEmpDetailsResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://emp.com"
+        qname="ns:>deleteEmpDetails"
+        type="java:com.emp.DeleteEmpDetails"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://emp.com"
+        qname="ns:>Hello"
+        type="java:com.emp.Hello"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://support.com"
+        qname="ns:Emp"
+        type="java:com.support.Emp"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://emp.com"
+        qname="ns:>insertEmpDetails"
+        type="java:com.emp.InsertEmpDetails"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://emp.com"
+        qname="ns:>updateEmpDetailsResponse"
+        type="java:com.emp.UpdateEmpDetailsResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://emp.com"
+        qname="ns:ArrayOf_tns1_Emp"
+        type="java:com.support.Emp[]"
+        innerType="cmp-ns:Emp" xmlns:cmp-ns="http://support.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://support.com"
+        qname="ns:EmpArray"
+        type="java:com.support.EmpArray"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://emp.com"
+        qname="ns:>updateEmpDetails"
+        type="java:com.emp.UpdateEmpDetails"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://emp.com"
+        qname="ns:>deleteEmpDetailsResponse"
+        type="java:com.emp.DeleteEmpDetailsResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

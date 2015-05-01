@@ -1,0 +1,44 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping>
+    <class name="com.support.Emp"  table="EMPLOYEE" >
+ 			<id name="eno"  			  column="EMP_NO"/>
+      <property  name="ename"  	          column="EMP_NAME"/>
+      <property  name="eskill"            column="EMP_SKILL"/>
+      <property  name="epdesc"            column="EMP_PROJECT_DESC"/>
+      <property  name="hiredate"          column="HIRE_DATE"/>
+      <property  name="mname"             column="MANAGER_NAME"/>
+      <property  name="dno"               column="DEPTNO"/>
+      <property  name="uid"               column="USERID"/>
+      <property  name="pswd"              column="PASSWORD"/>
+      <property  name="cuid"              column="CREATED_USERID"/>
+      <property  name="cdate"             column="CREATED_DATE"/>
+      <property  name="lmuid"             column="LAST_MODIFIED_USERID"/>
+      <property  name="lmdate"            column="LAST_MODIFIED_DATE"/>
+        
+</class>
+<sql-query name="insertemp">   
+    {call insertemployeev1(:empname,:empskill,:empprodesc,:hiredate,:deptno,:managername,:userid,:pswd,:createduserid)}
+</sql-query>
+
+<sql-query name="deleteemp">   
+    {call deleteemployee(:empno)}
+</sql-query>
+
+ <sql-query name="empselectbyid" callable="true">
+    <return alias="ev" class="com.support.Emp">
+       
+    </return>
+    <![CDATA[CALL  searchemployee(?,:eno)]]>
+</sql-query>
+
+<sql-query name="updateemp">   
+    {call updateemployee(:empno,:empname,:empskill,:empprodesc,:hiredate,:managername,:deptno,:userid,:pswd,:lastmodifieduserid)}
+</sql-query>
+
+<sql-query name="selectemp" callable="true" > 
+ <return class="com.support.Emp" />
+ {call selectemployee(?)} 
+     </sql-query> 
+</hibernate-mapping>

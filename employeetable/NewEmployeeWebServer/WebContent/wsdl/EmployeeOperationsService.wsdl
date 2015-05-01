@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://emp.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://emp.com" xmlns:intf="http://emp.com" xmlns:tns1="http://support.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://emp.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://support.com"/>
+   <element name="selectAllEmpDetails">
+    <complexType/>
+   </element>
+   <element name="selectAllEmpDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="selectAllEmpDetailsReturn" type="tns1:EmpArray"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_tns1_Emp">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:Emp"/>
+    </sequence>
+   </complexType>
+   <element name="selectEmpDetails">
+    <complexType>
+     <sequence>
+      <element name="emp" type="tns1:Emp"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="selectEmpDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="selectEmpDetailsReturn" type="xsd:anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertEmpDetails">
+    <complexType>
+     <sequence>
+      <element name="emp" type="tns1:Emp"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertEmpDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="insertEmpDetailsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateEmpDetails">
+    <complexType>
+     <sequence>
+      <element name="emp" type="tns1:Emp"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateEmpDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="updateEmpDetailsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteEmpDetails">
+    <complexType>
+     <sequence>
+      <element name="emp" type="tns1:Emp"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteEmpDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteEmpDetailsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="Hello">
+    <complexType/>
+   </element>
+   <element name="HelloResponse">
+    <complexType/>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://support.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://emp.com"/>
+   <complexType name="Emp">
+    <sequence>
+     <element name="cdate" nillable="true" type="xsd:string"/>
+     <element name="cuid" nillable="true" type="xsd:string"/>
+     <element name="dno" nillable="true" type="xsd:string"/>
+     <element name="ename" nillable="true" type="xsd:string"/>
+     <element name="eno" nillable="true" type="xsd:string"/>
+     <element name="epdesc" nillable="true" type="xsd:string"/>
+     <element name="eskill" nillable="true" type="xsd:string"/>
+     <element name="hiredate" nillable="true" type="xsd:string"/>
+     <element name="lmdate" nillable="true" type="xsd:string"/>
+     <element name="lmuid" nillable="true" type="xsd:string"/>
+     <element name="mname" nillable="true" type="xsd:string"/>
+     <element name="pswd" nillable="true" type="xsd:string"/>
+     <element name="uid" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="EmpArray">
+    <sequence>
+     <element name="emp" nillable="true" type="impl:ArrayOf_tns1_Emp"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="updateEmpDetailsRequest">
+
+      <wsdl:part element="impl:updateEmpDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="selectEmpDetailsResponse">
+
+      <wsdl:part element="impl:selectEmpDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertEmpDetailsResponse">
+
+      <wsdl:part element="impl:insertEmpDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteEmpDetailsRequest">
+
+      <wsdl:part element="impl:deleteEmpDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateEmpDetailsResponse">
+
+      <wsdl:part element="impl:updateEmpDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="HelloRequest">
+
+      <wsdl:part element="impl:Hello" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="HelloResponse">
+
+      <wsdl:part element="impl:HelloResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="selectAllEmpDetailsRequest">
+
+      <wsdl:part element="impl:selectAllEmpDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertEmpDetailsRequest">
+
+      <wsdl:part element="impl:insertEmpDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="selectEmpDetailsRequest">
+
+      <wsdl:part element="impl:selectEmpDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteEmpDetailsResponse">
+
+      <wsdl:part element="impl:deleteEmpDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="selectAllEmpDetailsResponse">
+
+      <wsdl:part element="impl:selectAllEmpDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="EmployeeOperationsService">
+
+      <wsdl:operation name="selectAllEmpDetails">
+
+         <wsdl:input message="impl:selectAllEmpDetailsRequest" name="selectAllEmpDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:selectAllEmpDetailsResponse" name="selectAllEmpDetailsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="selectEmpDetails">
+
+         <wsdl:input message="impl:selectEmpDetailsRequest" name="selectEmpDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:selectEmpDetailsResponse" name="selectEmpDetailsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertEmpDetails">
+
+         <wsdl:input message="impl:insertEmpDetailsRequest" name="insertEmpDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:insertEmpDetailsResponse" name="insertEmpDetailsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateEmpDetails">
+
+         <wsdl:input message="impl:updateEmpDetailsRequest" name="updateEmpDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateEmpDetailsResponse" name="updateEmpDetailsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteEmpDetails">
+
+         <wsdl:input message="impl:deleteEmpDetailsRequest" name="deleteEmpDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteEmpDetailsResponse" name="deleteEmpDetailsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="Hello">
+
+         <wsdl:input message="impl:HelloRequest" name="HelloRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:HelloResponse" name="HelloResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="EmployeeOperationsServiceSoapBinding" type="impl:EmployeeOperationsService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="selectAllEmpDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="selectAllEmpDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="selectAllEmpDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="selectEmpDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="selectEmpDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="selectEmpDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertEmpDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="insertEmpDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="insertEmpDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateEmpDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateEmpDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateEmpDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteEmpDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteEmpDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteEmpDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="Hello">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="HelloRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="HelloResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="EmployeeOperationsServiceService">
+
+      <wsdl:port binding="impl:EmployeeOperationsServiceSoapBinding" name="EmployeeOperationsService">
+
+         <wsdlsoap:address location="http://localhost:8080/NewEmployeeWebServer/services/EmployeeOperationsService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
